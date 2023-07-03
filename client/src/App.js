@@ -3,6 +3,41 @@ import "./App.css";
 import NavBar from "./components/NavBar";
 import HotelCard from "./components/HotelCard";
 
+const siteNames = [
+  {
+    id: 1,
+    name: "Val Thorens",
+  },
+  {
+    id: 2,
+    name: "Courchevel",
+  },
+  {
+    id: 3,
+    name: "Tignes",
+  },
+  {
+    id: 4,
+    name: "La Plagne",
+  },
+  {
+    id: 5,
+    name: "Chamonix",
+  },
+  {
+    id: 6,
+    name: "Les Menuires",
+  },
+  {
+    id: 7,
+    name: "L'alpes D'huez",
+  },
+  {
+    id: 8,
+    name: "Les Deux Alpes",
+  },
+];
+
 function App() {
   const [accommodations, setAccommodations] = useState([]);
   const [queryParams, setQueryParams] = useState(null);
@@ -36,18 +71,37 @@ function App() {
     setIsLoading(false);
   };
 
-  const renderInnerHeader = () => {};
+  const renderInnerHeader = () => {
+    if (accommodations.length === 0) {
+      return <></>;
+    }
+    return (
+      <div>
+        <p>Select your ski trip</p>
+        <p>
+          {accommodations.length} ski trips options ·{" "}
+          {siteNames.find((site) => site.id === queryParams.siteId).name} ·{" "}
+          {queryParams.fromDate.toLocaleString().split(",")[0]} -{" "}
+          {queryParams.toDate.toLocaleString().split(",")[0]} ·{" "}
+          {queryParams.groupSize} people
+        </p>
+      </div>
+    );
+  };
 
   return (
     <div className="App">
-      <NavBar onSubmit={onFilterChanged} />
+      <NavBar onSubmit={onFilterChanged} siteNames={siteNames} />
 
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        accommodations.forEach((accommodation) => {
-          return <HotelCard data={accommodation} />;
-        })
+        <>
+          {renderInnerHeader()}
+          {accommodations.map((accommodation) => {
+            return <HotelCard data={accommodation} />;
+          })}
+        </>
       )}
     </div>
   );
