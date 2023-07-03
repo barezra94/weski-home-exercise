@@ -30,7 +30,14 @@ const NavBar = (props) => {
     >
       <Toolbar>
         <img src="/logo.png" className="logo" alt="logo" />
-        <FormControl style={{ display: "flex", flexDirection: "row" }}>
+        <FormControl
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
           <Select
             placeholder="Select Site..."
             value={searchParams.siteId}
@@ -43,6 +50,9 @@ const NavBar = (props) => {
               marginLeft: 20,
               marginRight: 20,
               width: 132,
+              fontSize: 16,
+
+              color: "#525D7A",
             }}
           >
             {props.siteNames.map((site) => (
@@ -56,6 +66,9 @@ const NavBar = (props) => {
               marginLeft: 20,
               marginRight: 20,
               width: 132,
+              fontSize: 16,
+
+              color: "#525D7A",
             }}
             placeholder="Select Group Size..."
             value={searchParams.groupSize}
@@ -73,7 +86,13 @@ const NavBar = (props) => {
           </Select>
           <DatePicker
             showIcon
-            style={{ marginLeft: 20, marginRight: 20, width: 132 }}
+            style={{
+              marginLeft: 20,
+              marginRight: 20,
+              width: 132,
+              fontSize: 16,
+              color: "#525D7A",
+            }}
             selected={searchParams.fromDate}
             onChange={(date) => {
               setSearchParams({
@@ -85,7 +104,13 @@ const NavBar = (props) => {
           />
           <DatePicker
             showIcon
-            style={{ marginLeft: 20, marginRight: 20, width: 132 }}
+            style={{
+              marginLeft: 20,
+              marginRight: 20,
+              width: 132,
+              fontSize: 16,
+              color: "#525D7A",
+            }}
             selected={searchParams.toDate}
             onChange={(date) => {
               setSearchParams({
@@ -98,6 +123,7 @@ const NavBar = (props) => {
         <Button
           variant="contained"
           onClick={() => props.onSubmit(searchParams)}
+          style={{ marginLeft: 20 }}
         >
           Search
         </Button>

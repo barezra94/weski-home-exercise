@@ -77,7 +77,7 @@ function App() {
     }
     return (
       <div>
-        <p>Select your ski trip</p>
+        <p className="h6">Select your ski trip</p>
         <p>
           {accommodations.length} ski trips options ·{" "}
           {siteNames.find((site) => site.id === queryParams.siteId).name} ·{" "}
@@ -96,12 +96,18 @@ function App() {
       {isLoading ? (
         <div>Loading...</div>
       ) : (
-        <>
+        <div
+          style={{
+            display: "flex",
+            marginLeft: 150,
+            flexDirection: "column",
+          }}
+        >
           {renderInnerHeader()}
           {accommodations.map((accommodation) => {
             return <HotelCard data={accommodation} />;
           })}
-        </>
+        </div>
       )}
     </div>
   );

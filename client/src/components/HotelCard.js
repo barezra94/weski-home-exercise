@@ -32,18 +32,23 @@ const HotelCard = (props) => {
       >
         <div>
           <p>{props.data.HotelName}</p>
-          <p>{props.data.HotelInfo.Rating}</p>
-          <p>{}</p>
+          <p>Rating: {props.data.HotelInfo.Rating}</p>
         </div>
 
-        <div
-          style={{
-            position: "relative",
-            bottom: 0,
-            right: -300,
-          }}
-        >
-          <p>${props.data.PricesInfo.AmountAfterTax} / per person</p>
+        <div>
+          <div style={{ border: "1px solid #E0E3EB", width: 480 }}></div>
+          <p
+            style={{
+              fontSize: 18,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "flex-end",
+              justifyContent: "flex-end",
+            }}
+          >
+            ${props.data.PricesInfo.AmountAfterTax}{" "}
+            <div style={{ fontSize: 14, color: "#525D7A" }}>/ per person</div>
+          </p>
         </div>
       </CardContent>
     </Card>
